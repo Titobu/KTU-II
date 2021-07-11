@@ -17,6 +17,9 @@
         <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
         <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="TextBox1" ErrorMessage="Vardas yra privalomas" ForeColor="Red">*</asp:RequiredFieldValidator>
         <br />
+        Pavardė:<asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+        <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="TextBox2" ErrorMessage="Pavardė yra privaloma" ForeColor="Red">*</asp:RequiredFieldValidator>
+        <br />
         <asp:Label ID="Label3" runat="server" Text="Amžius:"></asp:Label>
         <asp:DropDownList ID="DropDownList1" runat="server">
         </asp:DropDownList>
