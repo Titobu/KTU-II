@@ -8,6 +8,35 @@ using System.Web.UI.WebControls;
 
 namespace Validation
 {
+
+    public class Student
+    {
+        private string name;
+        private string surname;
+        private string school;
+        private int age;
+        private string[] languages;
+
+        public Student(string name, string surname, string school, int age, string[] languages)
+        {
+            this.name = name;
+            this.surname = surname;
+            this.school = school;
+            this.age = age;
+            this.languages = languages;
+        }
+
+        public string Name { get { return name; } set { name = value; } }
+
+        public string Surname { get { return surname; } set { surname = value; } }
+
+        public string School { get { return school; } set { school = value; } }
+
+        public int Age { get { return age; } set { age = value; } }
+
+        public string[] Languages { get { return languages; } set { languages = value; } }
+
+    }
     public partial class WebForm1 : System.Web.UI.Page
     {
     
@@ -58,15 +87,15 @@ namespace Validation
             {
                 setSelectedLanguages();
             }
+
+            displayDataOfRegisteredStudents();
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            Session["name"] = TextBox1.Text;
-            Session["surname"] = TextBox2.Text;
-            Session["school"] = TextBox3.Text;
-            Session["age"] = DropDownList1.SelectedValue;
-            Session["languages"] = getSelectedLanguages();
+            save();
+
+            displayDataOfRegisteredStudents();
         }
 
         private string[] getSelectedLanguages()
@@ -109,6 +138,58 @@ namespace Validation
 
             CheckBoxList1.DataTextField = "pavadinimas";
             CheckBoxList1.DataBind();
+        }
+
+        private void save()
+        {
+            var students = new List<Student>();
+            string[] languages = getSelectedLanguages();
+            if (Session["savedDataOfRegisteredStudents"] != null)
+            {
+                students = (List<Student>)Session["savedDataOfRegisteredStudents"];
+            }
+
+            students.Add(new Student(TextBox1.Text, TextBox2.Text, TextBox3.Text, Int32.Parse(DropDownList1.SelectedValue), languages));
+
+            Session["savedDataOfRegisteredStudents"] = students;
+        }
+
+        private void displayDataOfRegisteredStudents()
+        {
+            Table1.Rows.Clear();
+
+            if (Session["savedDataOfRegisteredStudents"] != null)
+            {
+                var students = (List<Student>)Session["savedDataOfRegisteredStudents"];
+
+                foreach (Student student in students)
+                {
+                    TableRow row = new TableRow();
+
+                    TableCell name = new TableCell();
+                    name.Text = student.Name;
+                    row.Cells.Add(name);
+
+                    TableCell surname = new TableCell();
+                    surname.Text = student.Surname;
+                    row.Cells.Add(surname);
+
+                    TableCell school = new TableCell();
+                    school.Text = student.School;
+                    row.Cells.Add(school);
+
+                    TableCell age = new TableCell();
+                    age.Text = student.Age.ToString();
+                    row.Cells.Add(age);
+
+                    TableCell languages = new TableCell();
+                    string str = String.Join(", ", student.Languages);
+                    languages.Text = str;
+                    row.Cells.Add(languages);
+
+                    Table1.Rows.Add(row);
+                }
+            }
         }
     }
 }
