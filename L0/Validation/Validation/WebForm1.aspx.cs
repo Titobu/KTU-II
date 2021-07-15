@@ -156,19 +156,20 @@ namespace Validation
 
         private void displayDataOfRegisteredStudents()
         {
+            int nrCount = 0;
             Table1.Rows.Clear();
 
             if (Session["savedDataOfRegisteredStudents"] != null)
             {
-                int nrCount = 1;
                 var students = (List<Student>)Session["savedDataOfRegisteredStudents"];
 
                 foreach (Student student in students)
                 {
+                    nrCount++;
                     TableRow row = new TableRow();
 
                     TableCell nr = new TableCell();
-                    nr.Text = nrCount++.ToString();
+                    nr.Text = nrCount.ToString();
                     row.Cells.Add(nr);
 
                     TableCell surname = new TableCell();
@@ -190,8 +191,17 @@ namespace Validation
 
                     Table1.Rows.Add(row);
                 }
-                Label7.Text = "Viso dalyvių: " + (nrCount - 1);
+                
             }
+            
+            Label7.Text = "Viso dalyvių: " + (nrCount);
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            Session.Contents.RemoveAll();
+
+            displayDataOfRegisteredStudents();
         }
     }
 }

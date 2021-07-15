@@ -35,6 +35,7 @@
         </asp:CheckBoxList>
         <br />
         <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Registruotis" />
+        <asp:Button ID="Button2" runat="server" CausesValidation="False" OnClick="Button2_Click" Text="Ištrinti" />
         </form>
         <asp:Label ID="Label7" runat="server"></asp:Label>
         <asp:Table ID="Table1" runat="server">
