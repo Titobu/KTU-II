@@ -142,16 +142,20 @@ namespace Validation
 
         private void save()
         {
-            var students = new List<Student>();
-            string[] languages = getSelectedLanguages();
-            if (Session["savedDataOfRegisteredStudents"] != null)
+
+            if (validateInputs())
             {
-                students = (List<Student>)Session["savedDataOfRegisteredStudents"];
+                var students = new List<Student>();
+                string[] languages = getSelectedLanguages();
+                if (Session["savedDataOfRegisteredStudents"] != null)
+                {
+                    students = (List<Student>)Session["savedDataOfRegisteredStudents"];
+                }
+
+                students.Add(new Student(TextBox1.Text, TextBox2.Text, TextBox3.Text, Int32.Parse(DropDownList1.SelectedValue), languages));
+
+                Session["savedDataOfRegisteredStudents"] = students;
             }
-
-            students.Add(new Student(TextBox1.Text, TextBox2.Text, TextBox3.Text, Int32.Parse(DropDownList1.SelectedValue), languages));
-
-            Session["savedDataOfRegisteredStudents"] = students;
         }
 
         private void displayDataOfRegisteredStudents()
@@ -202,6 +206,56 @@ namespace Validation
             Session.Contents.RemoveAll();
 
             displayDataOfRegisteredStudents();
+        }
+
+        private bool validateInputs()
+        {
+            //validate name
+            if ((TextBox1.Text == null) || (TextBox1.Text == ""))
+            {
+                return false;
+            }
+
+            if ((TextBox1.Text.Count() > 20) || (TextBox1.Text.Count() < 2))
+            {
+                return false;
+            }
+
+            //validate surname
+            if ((TextBox2.Text == null) || (TextBox2.Text == ""))
+            {
+                return false;
+            }
+
+            if ((TextBox2.Text.Count() > 30) || (TextBox2.Text.Count() < 2))
+            {
+                return false;
+            }
+
+            //validate school
+            if ((TextBox3.Text == null) || (TextBox3.Text == ""))
+            {
+                return false;
+            }
+
+            if ((TextBox3.Text.Count() > 40) || (TextBox3.Text.Count() < 2))
+            {
+                return false;
+            }
+
+            //validate age
+            if ((DropDownList1.SelectedValue == null) || (DropDownList1.SelectedValue == ""))
+            {
+                return false;
+            }
+
+            if ((Int32.Parse(DropDownList1.SelectedValue) < 14) || (Int32.Parse(DropDownList1.SelectedValue) > 24))
+            {
+                return false;
+            }
+
+
+            return true;
         }
     }
 }
