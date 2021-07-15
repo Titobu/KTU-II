@@ -13,18 +13,13 @@ namespace Validation
     
         protected void Page_Load(object sender, EventArgs e)
         {
+            //set CheckBoxList1 data
             if (CheckBoxList1.Items.Count == 0)
             {
-                DataSet dsServices = new DataSet(); dsServices.ReadXml(MapPath("App_Data/languages.xml"));
-                CheckBoxList1.DataSource = dsServices;
-
-                CheckBoxList1.DataValueField = "pavadinimas";
-
-                CheckBoxList1.DataTextField = "pavadinimas";
-                CheckBoxList1.DataBind();
+                setDataToCheckBoxList1();
             }
 
-            //set age list
+            //set age list data
             if (DropDownList1.Items.Count == 0)
             {
                 DropDownList1.Items.Add("---------- ");        
@@ -103,6 +98,17 @@ namespace Validation
                     }
                 }
             }
+        }
+
+        private void setDataToCheckBoxList1()
+        {
+            DataSet dsServices = new DataSet(); dsServices.ReadXml(MapPath("App_Data/languages.xml"));
+            CheckBoxList1.DataSource = dsServices;
+
+            CheckBoxList1.DataValueField = "pavadinimas";
+
+            CheckBoxList1.DataTextField = "pavadinimas";
+            CheckBoxList1.DataBind();
         }
     }
 }
