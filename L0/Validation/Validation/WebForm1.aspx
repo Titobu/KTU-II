@@ -31,9 +31,8 @@
         <asp:RangeValidator ID="RangeValidator1" runat="server" ControlToValidate="DropDownList1" ErrorMessage="Neteisinga metų reikšmė" ForeColor="Red" MaximumValue="25" MinimumValue="14" Type="Integer">*</asp:RangeValidator>
         <br />
         <asp:Label ID="Label4" runat="server" Text="Programavimo kalba:"></asp:Label>
-        <asp:CheckBoxList ID="CheckBoxList1" runat="server" DataSourceID="XmlDataSource1" DataTextField="pavadinimas" DataValueField="pavadinimas" OnSelectedIndexChanged="CheckBoxList1_SelectedIndexChanged">
+        <asp:CheckBoxList ID="CheckBoxList1" runat="server">
         </asp:CheckBoxList>
-        <asp:XmlDataSource ID="XmlDataSource1" runat="server" DataFile="~/App_Data/languages.xml" OnTransforming="XmlDataSource1_Transforming"></asp:XmlDataSource>
         <br />
         <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Registruotis" />
     </form>

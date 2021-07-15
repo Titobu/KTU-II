@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -12,11 +13,21 @@ namespace Validation
     
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (CheckBoxList1.Items.Count == 0)
+            {
+                DataSet dsServices = new DataSet(); dsServices.ReadXml(MapPath("App_Data/languages.xml"));
+                CheckBoxList1.DataSource = dsServices;
+
+                CheckBoxList1.DataValueField = "pavadinimas";
+
+                CheckBoxList1.DataTextField = "pavadinimas";
+                CheckBoxList1.DataBind();
+            }
+
             //set age list
             if (DropDownList1.Items.Count == 0)
             {
-                DropDownList1.Items.Add("---------- ");
-            
+                DropDownList1.Items.Add("---------- ");        
                 for (int i = 14; i < 25; i++)
                 {
                     DropDownList1.Items.Add(i.ToString());
@@ -46,6 +57,12 @@ namespace Validation
             {
                 TextBox3.Text = (string)Session["school"];
             }
+
+            //set languages field from session
+            if (Session["languages"] != null)
+            {
+                setSelectedLanguages();
+            }
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -54,6 +71,38 @@ namespace Validation
             Session["surname"] = TextBox2.Text;
             Session["school"] = TextBox3.Text;
             Session["age"] = DropDownList1.SelectedValue;
+            Session["languages"] = getSelectedLanguages();
+        }
+
+        private string[] getSelectedLanguages()
+        {
+            string[] result = new string[0];
+            foreach (ListItem item in CheckBoxList1.Items)
+            {
+                if (item.Selected == true)
+                {
+                    Array.Resize(ref result, result.Length + 1);
+                    result[result.GetUpperBound(0)] = item.Value;
+                }
+            }
+
+            return result;
+        }
+
+        private void setSelectedLanguages()
+        {
+            string[] languages = (string[])Session["languages"];
+
+            if (CheckBoxList1.Items.Count > 0)
+            {
+                foreach (ListItem li in CheckBoxList1.Items)
+                {
+                    if (Array.Exists(languages, element => element == li.Value))
+                    {
+                        li.Selected = true;
+                    }
+                }
+            }
         }
     }
 }
