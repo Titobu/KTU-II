@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31424.327
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "L1U1 Kvadratai kvadrate", "L1U1 Kvadratai kvadrate\L1U1 Kvadratai kvadrate.csproj", "{D7D11895-96C5-4445-8DE7-A711441D3B11}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D7D11895-96C5-4445-8DE7-A711441D3B11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7D11895-96C5-4445-8DE7-A711441D3B11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7D11895-96C5-4445-8DE7-A711441D3B11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7D11895-96C5-4445-8DE7-A711441D3B11}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E91D89C7-67A9-4983-A416-4F9EDE79A0D6}
+	EndGlobalSection
+EndGlobal
