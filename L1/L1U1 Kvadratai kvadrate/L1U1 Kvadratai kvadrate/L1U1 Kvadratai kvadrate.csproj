@@ -67,10 +67,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\U1.txt" />
     <Content Include="Web.config" />
     <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="InOutUtil.cs" />
     <Compile Include="Point.cs" />
     <Compile Include="Points.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -11,14 +11,15 @@ namespace L1U1_Kvadratai_kvadrate
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            const string CFD1 = "~/App_Data/U1.txt";
+
             //Sukurti klasę Point
-            Point point2 = new Point(new int[] { 1, 1 }, new int[] { 2, 2 }, 3);
 
             //Sukurti konteinerinę klasę Points
             Points points = new Points();
-            points.Add(point2);
 
             //Nuskaityti duomenis
+            points = InOutUtil.ReadPoints(Server.MapPath(CFD1));
 
             //Įrašyti pradinius duomenis į failą
             //Atvaizduoti pradinius duomenis ekrane
