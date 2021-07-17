@@ -12,6 +12,7 @@ namespace L1U1_Kvadratai_kvadrate
         protected void Page_Load(object sender, EventArgs e)
         {
             const string CFD1 = "~/App_Data/U1.txt";
+            const string CFR = "~/App_Data/Rezultatai.txt";
 
             //Sukurti klasę Point
 
@@ -22,6 +23,8 @@ namespace L1U1_Kvadratai_kvadrate
             points = InOutUtil.ReadPoints(Server.MapPath(CFD1));
 
             //Įrašyti pradinius duomenis į failą
+            InOutUtil.PrintMap(Server.MapPath(CFR), points);
+
             //Atvaizduoti pradinius duomenis ekrane
 
             //Sukurti klasę Square

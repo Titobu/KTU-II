@@ -10,7 +10,8 @@ namespace L1U1_Kvadratai_kvadrate
         private Point[] allPoints = new Point[10];
         private int pointCounter;
 
-        private int[][] squares;
+        private int[][] map;
+        private int mapSize;
     
     
         public void Add(Point point)
@@ -22,5 +23,10 @@ namespace L1U1_Kvadratai_kvadrate
         {
             return this.allPoints[index];
         }
+
+        public int[][] Map { get; set; }
+
+        public int MapSize { get; set; }
+
     }
 }
