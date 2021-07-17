@@ -26,6 +26,7 @@ namespace L1U1_Kvadratai_kvadrate
             InOutUtil.PrintMap(Server.MapPath(CFR), points);
 
             //Atvaizduoti pradinius duomenis ekrane
+            DisplayResult(points);
 
             //Sukurti klasę Square
             //Sukurti klasę Squares
@@ -40,6 +41,35 @@ namespace L1U1_Kvadratai_kvadrate
         protected void Button1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void DisplayResult(Points points)
+        {
+            int[][] map = points.Map;
+
+            //display map size
+            TableCell cellN = new TableCell();
+            cellN.Text =points.MapSize.ToString();
+            TableRow rowN = new TableRow();
+            rowN.Cells.Add(cellN);
+            Table1.Rows.Add(rowN);
+
+            //display map
+            for (int i = 0; i < points.MapSize; i++)
+            {
+                TableRow row = new TableRow();
+
+                for (int j = 0; j < points.MapSize; j++)
+                {
+                    TableCell cell = new TableCell();
+                    cell.Text = map[i][j].ToString();
+
+                    
+                    row.Cells.Add(cell);
+                }
+
+                Table1.Rows.Add(row);
+            }
         }
     }
 }

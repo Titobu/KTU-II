@@ -13,5 +13,9 @@
             <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Skaičiuoti" />
         </div>
     </form>
+        <asp:Label ID="Label2" runat="server" Text="Pradiniai duomenys:"></asp:Label>
+        <asp:Table ID="Table1" runat="server">
+        </asp:Table>
+    
 </body>
 </html>

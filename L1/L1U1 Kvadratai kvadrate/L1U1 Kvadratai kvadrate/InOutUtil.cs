@@ -13,7 +13,7 @@ namespace L1U1_Kvadratai_kvadrate
         {
             
             Points points = new Points();
-            // get n;
+            //get n;
             string[] lines = File.ReadAllLines(fileName, Encoding.UTF8);
             int n = Int32.Parse(lines[0]);
 
