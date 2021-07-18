@@ -29,7 +29,15 @@ namespace L1U1_Kvadratai_kvadrate
             DisplayResult(points);
 
             //Sukurti klasę Square
+            Square square = new Square();
+            square.Add(points.Get(0));
+            square.Add(points.Get(2));
+            square.Add(points.Get(6));
+            square.Add(points.Get(3));
+
             //Sukurti klasę Squares
+            Squares squares = new Squares();
+            squares.Add(square);
 
             //Sukurti funkciją findSquare()
             //Sukurti rekursinę funkciją checkNextPoint()
